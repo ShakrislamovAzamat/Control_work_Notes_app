@@ -4,20 +4,17 @@ import datetime
 
 def open_file():
     try:
-        with open("notes.json", "r") as file:
+        with open('notes.json', 'r') as file:
             return json.load(file)
     except FileNotFoundError:
         return []
 
-
 notes = open_file()
 
-
 def save_file(notes):
-    with open("notes.json", "w") as file:
+    with open('notes.json', 'w') as file:
         json.dump(notes, file, indent=4)
     print("\nИзменения сохранены!")
-
 
 def add_note():
     title = input("\nВведите заголовок заметки: ")
@@ -27,7 +24,6 @@ def add_note():
     notes.append(note)
     print("Заметка успешно добавлена!")
     save_file(notes)
-
 
 def delete_note():
     print_notes(notes)
@@ -39,7 +35,6 @@ def delete_note():
             save_file(notes)
             return
     print("Заметка с указанным номером не найдена!\n")
-
 
 def edit_note():
     print_notes(notes)
@@ -57,7 +52,6 @@ def edit_note():
             save_file(notes)
             return
     print("Заметка с указанным номером не найдена!\n")
-
 
 def filter_notes_by_date():
     date_str = input("Введите дату для фильтрации заметок (YYYY-MM-DD): ")
@@ -106,7 +100,6 @@ def menu():
     [print(f"\t{i}. {item}") for i, item in enumerate(menu_points, 1)]
     choise = int(input("\nВыберите требуемый пункт меню: "))
     return choise
-
 
 while True:
     print()
